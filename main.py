@@ -1,4 +1,3 @@
-
 import uvicorn
 
 from app.web import app
