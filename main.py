@@ -1,5 +1,12 @@
+import asyncio
+
+import uvicorn
+
+from app.web import app
+
+
 def main():
-    print("Hello from notes-fastapi!")
+    uvicorn.run(app)
 
 
 if __name__ == "__main__":
