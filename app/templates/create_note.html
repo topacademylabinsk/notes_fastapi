@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block styles %}
+    <link rel="stylesheet" href="styles/create_note.css">
+{% endblock %}
+
+{% block body %}
+    <div class="main_container">
+        <h1>Создание заметки</h1>
+        <div class="form_container">
+            <form class="form" hx-post="" hx-swap="none" hx-ext='json-enc'>
+                <div class="form_element">
+                    <p>Тема заметки:</p>
+                    <input type="text" name="note_title">
+                </div>
+                <div class="form_element">
+                    <p>Содержание заметки:</p>
+                    <textarea name="note_text"></textarea>
+                </div>
+                <button class="form_button" type="submit">Создать заметку</button>
+            </form>
+        </div>
+    </div>
+    
+{% endblock %}

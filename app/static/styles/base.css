@@ -7,3 +7,22 @@ body {
 
     background-color: whitesmoke;
 }
+
+header, main, footer {
+ width: 100%;
+}
+
+.header_container {
+    background-color: rgb(100, 100, 100);
+    height: 60px;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+}
+
+.footer_container {
+    background-color: rgb(100, 100, 100);
+    height: 60px;
+}

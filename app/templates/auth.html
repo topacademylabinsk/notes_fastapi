@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вход</title>
+    <link rel="stylesheet" href="styles/auth.css">
+
+    <!-- HTMX -->
+    <script src="https://cdn.jsdelivr.net/npm/htmx.org@2.0.6/dist/htmx.min.js"></script>
+    <script src="https://unpkg.com/htmx-ext-json-enc@2.0.1/json-enc.js"></script>
+</head>
+    <body>
+        <main>
+            <div class="main_container">
+                <h1>Вход</h1>
+                <div class="form_container">
+                    <form class="form" hx-post="auth" hx-ext='json-enc'>
+                        <div class="form_element">
+                            <p>Логин:</p>
+                            <input type="text" name="login">
+                        </div>
+                        <div class="form_element">
+                            <p>Пароль:</p>
+                            <input type="password" name="password">
+                        </div>
+                        <button class="form_button" type="submit">Вход</button>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </body>
+</html>
+
+
+
+
+
+
+

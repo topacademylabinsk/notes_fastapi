@@ -1,0 +1,38 @@
+.main_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.main_container h1 {
+    margin: 25px 0px;
+    font-weight: 300;
+}
+
+.form_container {
+    display: flex;
+    width: 70%;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.form_element {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.form button {
+    width: 250px;
+    background-color: cornsilk;
+    border-width: 1px;
+}
