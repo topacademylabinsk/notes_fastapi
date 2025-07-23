@@ -22,6 +22,7 @@ body {
 
 .form_container {
     display: flex;
+    justify-content: center;
     width: 70%;
 }
 
@@ -50,4 +51,24 @@ body {
     width: 250px;
     background-color: cornsilk;
     border-width: 1px;
+    padding: 5px 15px;
+}
+
+.auth_error {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.retry_button {
+    display: flex;
+    background-color: cornsilk;
+    border: 1px solid black;
+}
+
+.retry_button a {
+    padding: 5px 15px;
+    text-decoration: none;
+    color: black;
 }

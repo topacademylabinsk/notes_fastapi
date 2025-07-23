@@ -15,7 +15,7 @@
             <div class="main_container">
                 <h1>Вход</h1>
                 <div class="form_container">
-                    <form class="form" hx-post="auth" hx-ext='json-enc'>
+                    <form class="form" hx-post="auth" hx-swap="outerHTML" hx-ext='json-enc'>
                         <div class="form_element">
                             <p>Логин:</p>
                             <input type="text" name="login">
