@@ -135,6 +135,7 @@ source = { virtual = "." }
 dependencies = [
     { name = "fastapi" },
     { name = "jinja2" },
+    { name = "pydantic" },
     { name = "pyjwt" },
     { name = "python-dotenv" },
     { name = "uvicorn" },
@@ -144,6 +145,7 @@ dependencies = [
 requires-dist = [
     { name = "fastapi", specifier = ">=0.116.1" },
     { name = "jinja2", specifier = ">=3.1.6" },
+    { name = "pydantic", specifier = ">=2.11.7" },
     { name = "pyjwt", specifier = ">=2.10.1" },
     { name = "python-dotenv", specifier = ">=1.1.1" },
     { name = "uvicorn", specifier = ">=0.35.0" },

@@ -6,10 +6,14 @@ class DB:
         self.con = sqlite3.connect(db_name)
         self.cur = self.con.cursor()
 
-        self.cur.execute("CREATE TABLE IF NOT EXISTS notes(id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, description TEXT)")
+        self.cur.execute(
+            "CREATE TABLE IF NOT EXISTS notes(id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, description TEXT)"
+        )
 
     def create_note(self, title: str, description: str):
-        self.cur.execute("INSERT INTO notes (title, description) VALUES(?, ?)", (title, description))
+        self.cur.execute(
+            "INSERT INTO notes (title, description) VALUES(?, ?)", (title, description)
+        )
         self.con.commit()
 
     def get_note(self, id: str):
@@ -17,7 +21,7 @@ class DB:
         self.cur.execute(query, (id))
         note = self.cur.fetchone()
         return note
-    
+
     def get_all_notes(self):
         query = "SELECT * FROM notes"
         self.cur.execute(query)

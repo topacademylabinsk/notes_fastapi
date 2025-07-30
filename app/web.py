@@ -1,12 +1,15 @@
+import datetime
 import json
 import os
-import datetime
 
 import jwt
 from dotenv import load_dotenv
 from fastapi import FastAPI, Request, responses
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
+from pydantic import BaseModel
+
+from app.db import DB
 
 load_dotenv()
 
@@ -43,7 +46,15 @@ async def post_auth(request: Request):
         if data["password"] == ADMIN_PASSWORD:
             response = responses.Response(headers={"HX-Redirect": "/notes"})
 
-            jwt_key = jwt.encode(payload={'user_id':"123",'exp':datetime.datetime.utcnow()+datetime.timedelta(minutes=1440)}, key=test_jwk, algorithm="HS256")
+            jwt_key = jwt.encode(
+                payload={
+                    "user_id": "123",
+                    "exp": datetime.datetime.utcnow()
+                    + datetime.timedelta(minutes=1440),
+                },
+                key=test_jwk,
+                algorithm="HS256",
+            )
             response.set_cookie("jwt", jwt_key)
         else:
             response = templates.TemplateResponse(
@@ -57,12 +68,25 @@ async def post_auth(request: Request):
 @app.get("/create_note")
 async def get_create_note(request: Request):
     try:
-        if jwt.decode(jwt=str(request.cookies.get("jwt")), key=test_jwk, algorithms=["HS256"]):
+        if jwt.decode(
+            jwt=str(request.cookies.get("jwt")), key=test_jwk, algorithms=["HS256"]
+        ):
             return templates.TemplateResponse(request=request, name="create_note.html")
         else:
             return responses.HTMLResponse("Неправильные куки1")
     except Exception:
         return responses.HTMLResponse("Неправильные куки2")
+
+
+class AppNote(BaseModel):
+    title: str
+    description: str
+
+
+@app.post("/create_note")
+async def create_note(request: Request, data: AppNote):
+    db = DB("test_db.db3")
+    db.create_note(data.title, data.description)
 
 
 @app.get("/notes")
