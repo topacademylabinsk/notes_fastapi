@@ -1,5 +1,6 @@
 import json
 import os
+import datetime
 
 import jwt
 from dotenv import load_dotenv
@@ -42,7 +43,7 @@ async def post_auth(request: Request):
         if data["password"] == ADMIN_PASSWORD:
             response = responses.Response(headers={"HX-Redirect": "/notes"})
 
-            jwt_key = jwt.encode(payload={"data": "test_payload"}, key=test_jwk)
+            jwt_key = jwt.encode(payload={'user_id':"123",'exp':datetime.datetime.utcnow()+datetime.timedelta(minutes=1440)}, key=test_jwk, algorithm="HS256")
             response.set_cookie("jwt", jwt_key)
         else:
             response = templates.TemplateResponse(
@@ -56,12 +57,12 @@ async def post_auth(request: Request):
 @app.get("/create_note")
 async def get_create_note(request: Request):
     try:
-        if jwt.decode(request.cookies["jwt"], test_jwk):
+        if jwt.decode(jwt=str(request.cookies.get("jwt")), key=test_jwk, algorithms=["HS256"]):
             return templates.TemplateResponse(request=request, name="create_note.html")
         else:
-            return responses.HTMLResponse("Неправильные куки")
+            return responses.HTMLResponse("Неправильные куки1")
     except Exception:
-        return responses.HTMLResponse("Неправильные куки")
+        return responses.HTMLResponse("Неправильные куки2")
 
 
 @app.get("/notes")
