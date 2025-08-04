@@ -31,8 +31,21 @@
     margin-bottom: 30px;
 }
 
-.form button {
+.form_button {
     width: 250px;
     background-color: cornsilk;
     border-width: 1px;
+    margin-bottom: 20px;
+}
+
+.form_link {
+    width: 250px;
+    background-color: cornsilk;
+    border: black solid 1px;
+    text-align: center;
+}
+
+.form_link a {
+    text-decoration: none;
+    
 }

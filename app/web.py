@@ -91,4 +91,8 @@ async def create_note(request: Request, data: AppNote):
 
 @app.get("/notes")
 async def get_notes(request: Request):
-    return templates.TemplateResponse(request=request, name="notes.html")
+    db = DB("test_db.db3")
+    notes_list = db.get_all_notes()
+    return templates.TemplateResponse(
+        request=request, name="notes.html", context={"notes_list": notes_list}
+    )

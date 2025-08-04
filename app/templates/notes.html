@@ -5,5 +5,21 @@
 {% endblock %}
 
 {% block body %}
+<div class="notes">
+    {% for note in notes_list %}
+    <div class="note">
+        <div class="note_title">
+            {{note[1]}}
+        </div>
+        <div class="note_description">
+            {{note[2]}}
+        </div>
+    </div>
+    {% endfor %}
+    <div class="create_note_link">
+    <a href="/create_note">Создать заметку</a>
+</div>
+</div>
+
 
 {% endblock %}

@@ -1,0 +1,36 @@
+.notes {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 60px;
+}
+
+.note {
+    margin: 10px 0px;
+    border: black solid 1px;
+    width: 600px;
+    background-color: cornsilk;
+}
+
+.note_title {
+    font-size: large;
+    border-bottom: black solid 1px;
+    text-align: center;
+    padding: 10px;
+}
+
+.note_description {
+    padding: 10px;
+}
+
+.create_note_link {
+    width: 250px;
+    background-color: cornsilk;
+    border: black solid 1px;
+    text-align: center;
+}
+
+.create_note_link a {
+    text-decoration: none;
+}
